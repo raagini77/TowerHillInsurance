@@ -1,0 +1,45 @@
+html {
+  padding-left: 350px;
+}
+body{
+  
+    font-size: 100%;
+    font: inherit;
+  }
+  
+  .event-calendar{
+    height:720px;
+    width: 900px;
+    display: inline-flex;
+  }
+
+  .time {
+    
+    text-align: right;
+    background-color: white;
+    height:720px;
+    padding-right: 10px;
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 0.5em;
+    box-sizing: border-box;
+  }
+  
+  .time span{
+    font-size: 15px;
+    font-weight: bold;
+    color: #696969;
+  }
+
+  .calendar {
+    height: 720px;
+    width: 620px;
+    padding: 0px 10px;
+    background-color: #F0F0F8;
+    border-color: #D1D1D1;
+    box-sizing: border-box;
+  }
+
+ 
