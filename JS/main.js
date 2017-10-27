@@ -1,4 +1,4 @@
-var layOutDay = function(events) {
+var functionalEvents = function(events) {
     var events = events;
     var concussions = [];
     var  width = [];
@@ -13,11 +13,7 @@ var layOutDay = function(events) {
         marginOffSet.push(0);
 		
       }
-	 // console.log("hello due");
-  
-  //console.log(concussions);
-  
-  // for eeach
+	
       concussions.forEach(function(period){
     
         let count = period.reduce(function(a,b) {
@@ -69,13 +65,28 @@ var layOutDay = function(events) {
       });
     }
   
-      
+    var showEvent = function(height, top, left, units) {
+      let manager = document.createElement("div");
+      manager.className = "event";
+      manager.innerHTML = 
+      "<span class='title'> Sample Item </span> \
+      <br><span class='location'> Sample Location </span>";
+      manager.style.width = (calendarWidth/units) + "px";
+      manager.style.height = height + "px";
+      manager.style.top =  top + "px";
+      manager.style.left = 120 + left + "px";
+	  
+	  
+	  
+    
+      document.getElementById("events").appendChild(manager);
+    }
 	
   
     this.render = function() {
       
       var myManager = document.getElementById("events");
-      //
+      myManager.innerHTML = '';
   
       getConcussions();
       getProperties();
@@ -88,17 +99,17 @@ var layOutDay = function(events) {
         let units = width[id];
         if (!units) {units = 1};
         let left = (calendarWidth / width[id]) * (marginOffSet[id] - 1) + 10;
-        
-		console.log("top:"+top+"end:"+end+"start:"+start);
+        if (!left || left < 0) {left = 10};
+        showEvent(height, top, left, units);
+      });
     }
-	
-	
   }
   
-  
+  window.layOutDay = function(events) {
+    let obj = new functionalEvents(events);
+    obj.render();
+  }
 
-    
- var obj = new  layOutDay([ {start: 30, end: 150},{start: 540, end: 600},{start: 560, end: 620}, {start: 610, end: 670} ]);
-                        
-  obj.render();
-  
+      window.onload = function() { 
+                        layOutDay([ {start: 30, end: 150},{start: 540, end: 600},{start: 560, end: 620}, {start: 610, end: 670} ])
+                        }
